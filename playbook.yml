@@ -1,0 +1,18 @@
+- hosts: all
+  become: true
+
+  tasks:
+    - name: Mettre à jour le cache
+      apt:
+        update_cache: yes
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Lancer nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true
